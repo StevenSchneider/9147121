@@ -47,7 +47,7 @@ function Calendar() {
             {week.map((day) => (
               <div key={`day-${day}`} className="calendar-day">
                 {day &&
-                  <Link to={`/todo`}>
+                  <Link to={`/todo/${day}`}>
                     {day}
                   </Link>
                 }

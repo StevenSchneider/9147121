@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './TodoList.css';
+import { useParams } from 'react-router-dom';
+import moment from 'moment';
 
 function TodoList({ todos, setTodos }) {
   const [newTodo, setNewTodo] = useState('');
+  const { day } = useParams();
+  const filteredTodos = day ? todos.filter(todo => moment(todo.id).date() === parseInt(day)) : todos;
   React.useEffect(() => {
-    const json = JSON.stringify(todos);
+    const json = JSON.stringify(filteredTodos);
     localStorage.setItem('todos', json);
-  }, [todos]);
+  }, [filteredTodos]);
 
   const addTodo = (e) => {
     e.preventDefault();
     if (newTodo.trim() === '') {
       return;
     }
-    setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+    setTodos([...filteredTodos, { id: Date.now(), text: newTodo, completed: false }]);
     setNewTodo('');
   };
 
   const toggleCompleted = (id) => {
     setTodos(
-      todos.map((todo) =>
+      filteredTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(filteredTodos.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -41,7 +45,7 @@ function TodoList({ todos, setTodos }) {
         <button>Add</button>
       </form>
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <li key={todo.id}>
             <input
               type="checkbox"
@@ -60,3 +64,4 @@ function TodoList({ todos, setTodos }) {
 }
 
 export default TodoList;
+
