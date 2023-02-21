@@ -4,7 +4,8 @@ import TodoList from './components/TodoList';
 import React, { useState } from 'react';
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = React.useState(() =>
+    JSON.parse(localStorage.getItem('todos')) || []);
 
   return (
     <div>
