@@ -3,7 +3,7 @@ import './calendar.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-function Calendar() {
+const Calendar = () => {
   const now = moment();
   const daysInMonth = now.daysInMonth();
   const monthStart = now.startOf('month').day() === 0 ? 7 : now.startOf('month').day();
@@ -47,7 +47,7 @@ function Calendar() {
             {week.map((day) => (
               <div key={`day-${day}`} className="calendar-day">
                 {day &&
-                  <Link to={`/todo`}>
+                  <Link to={`/todo/${day}`}>
                     {day}
                   </Link>
                 }
@@ -60,35 +60,4 @@ function Calendar() {
   );
 }
 
-//function ToDoList(props) {
-//  const [newTask, setNewTask] = useState('');
-//  const [tasks, setTasks] = useState(props.tasks);
-
-//  const handleNewTaskChange = (event) => {
-//    setNewTask(event.target.value);
-//  }
-
-//  const handleNewTaskSubmit = (event) => {
-//    event.preventDefault();
-//    setTasks([...tasks, newTask]);
-//    setNewTask('');
-//  }
-
-//  return (
-//    <div>
-//      <h2>To-Do List for {props.date}</h2>
-//      <form onSubmit={handleNewTaskSubmit}>
-//        <input type="text" value={newTask} onChange={handleNewTaskChange} />
-//        <button type="submit">Add Task</button>
-//      </form>
-//      <ul>
-//        {tasks.map((task, index) => (
-//          <li key={index}>{task}</li>
-//        ))}
-//      </ul>
-//    </div>
-//  );
-//}
-
 export default Calendar;
-//export { ToDoList };

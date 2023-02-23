@@ -3,8 +3,8 @@ import Calendar from './components/Calendar';
 import TodoList from './components/TodoList';
 import React, { useState } from 'react';
 
-function App() {
-  const [todos, setTodos] = React.useState(() =>
+const App = () => {
+  const [todos, setTodos] = useState(() =>
     JSON.parse(localStorage.getItem('todos')) || []);
 
   return (
@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Calendar />} />
-          <Route path="/todo" element={<TodoList todos={todos} setTodos={setTodos} />} />
+          <Route path="/todo/:day" element={<TodoList todos={todos} setTodos={setTodos} />} />
         </Routes>
       </Router>
     </div>
