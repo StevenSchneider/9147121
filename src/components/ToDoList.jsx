@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './TodoList.css';
 import { useParams } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const TodoList = () => {
   const {day} = useParams();
@@ -49,10 +50,13 @@ const TodoList = () => {
     });
     setTodos(updatedTodos);
     setTodoEdit(null);
-  }
+  };
 
   return (
     <div className="todo-list-container">
+      <div align='right'>
+        <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}><button > Back to Calendar </button></NavLink>
+      </div>
       <h2 className="todo-list-header">To-Dos for Today</h2>        
       <form onSubmit={addTodo}>
         <input
