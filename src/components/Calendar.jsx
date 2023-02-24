@@ -3,11 +3,11 @@ import './calendar.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const Day = ({ number, day }) => {
-  const [todos, setTodos] = React.useState(() => JSON.parse(localStorage.getItem(`todos-${day}`)) || []);
+const Day = ({ number, id }) => {
+  const [todos, setTodos] = React.useState(() => JSON.parse(localStorage.getItem(`todos-${id}`)) || []);
   return (
     <div className="day">
-      {number} <Link to={`/todo/${number}`}> To-Do: {todos.length} </Link>
+      {number} <Link to={`/todo/${number}`}> To-Dos: {todos.length} </Link>
     </div>
   );
 };
@@ -55,7 +55,7 @@ const Calendar = () => {
           <div key={`week-${index}`} className="calendar-week">
             {week.map((day) => (
               <div key={`day-${day}`} className="calendar-day">
-                {day && <Day number={day} id={now.set('date', day).format('YYYY-MM-DD')} />}
+                {day && <Day number={day} id={day} />}
               </div>
             ))}
           </div>
