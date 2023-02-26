@@ -1,45 +1,57 @@
-.todo-list-container {
+body {
+    font-family: sans-serif;
+  }
+  
+  .todo-list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
-}
+  }
   
-.todo-list-header {
-    font-size: 24px;
+  .todo-list-header {
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 16px;
-}
+  }
   
-.todo-list {
+  .todo-list {
     list-style: none;
     margin: 0;
     padding: 0;
     width: 80%;
     max-width: 400px;
-}
+  }
   
-.todo-list li {
+  .todo-list > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 8px;
     padding: 8px;
-    background-color: #f2f2f2;
+    background-color: #fff;
     border-radius: 8px;
-}
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+  }
   
-.todo-list li input[type="checkbox"] {
+  .todo-list > div > div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-list > div > div input[type="checkbox"] {
     margin-right: 8px;
-}
+  }
   
-.todo-list li span {
+  .todo-list > div > div span {
     flex-grow: 1;
     text-decoration: none;
-}
+    color: #000;
+  }
   
-.todo-list li button {
+  .todo-list > div > div button {
     margin-left: 8px;
     background-color: #e74c3c;
     color: #fff;
@@ -47,5 +59,50 @@
     border-radius: 4px;
     padding: 8px;
     cursor: pointer;
-}
+  }
+  
+  .todo-list > div > div button.delete-button {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+
+  .navbar {
+    background-color: lightgrey;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-link {
+    color: black;
+  }
+
+  .todo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .todo-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: black;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    height: 36px;
+    border-style: solid;
+  }
+
+  .add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
   

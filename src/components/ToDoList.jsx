@@ -1,3 +1,5 @@
+//Matrikelnummer: 9147121
+
 import React, { useState, useEffect } from 'react';
 import './TodoList.css';
 import { useParams } from 'react-router-dom';
@@ -54,22 +56,22 @@ const TodoList = () => {
 
   return (
     <div className="todo-list-container">
-      <div align='right'>
-        <NavLink to='/' style={{textDecoration: 'none', color: 'black'}}><button > Back to Calendar </button></NavLink>
+      <div className="navbar">
+        <NavLink  to='/' className="nav-link">Back to Calendar</NavLink>
       </div>
       <h2 className="todo-list-header">To-Dos for Today</h2>        
-      <form onSubmit={addTodo}>
+      <form className="todo-form" onSubmit={addTodo}>
         <input
           type="text"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <button>Add</button>
+        <button className="add-button">Add</button>
       </form>
       <ul className="todo-list">
       {todos.map((todo) => (
-          <div key={todo.id} >
-            <div >
+          <div key={todo.id} className="todo-item">
+            <div className="todo-text">
               <input
                 type="checkbox"
                 id="completed"
@@ -80,18 +82,19 @@ const TodoList = () => {
                 <input
                   type="text"
                   onChange={(e) => setEditText(e.target.value)}
+                  className="edit-input"
                 />
               ) : (
                 <div><span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</span></div>
               )}
             </div>
-            <div >
+            <div className="todo-buttons">
               {todo.id === todoEditing ? (
-                <button onClick={() => submitEdits(todo.id)}>Submit</button>
+                <button onClick={() => submitEdits(todo.id)} className="submit-button">Submit</button>
               ) : (
-                <button onClick={() => setTodoEdit(todo.id)}>Edit</button>
+                <button onClick={() => setTodoEdit(todo.id)} className="edit-button">Edit</button>
               )}
-              <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+              <button onClick={() => deleteTodo(todo.id)} className="delete-button">Delete</button>
             </div>
           </div>
         ))}

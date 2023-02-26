@@ -1,3 +1,5 @@
+//Matrikelnummer: 9147121
+
 import React from 'react';
 import './calendar.css';
 import moment from 'moment';
@@ -7,7 +9,7 @@ const Day = ({ number, id }) => {
   const [todos, setTodos] = React.useState(() => JSON.parse(localStorage.getItem(`todos-${id}`)) || []);
   return (
     <div className="day">
-      {number} <Link to={`/todo/${number}`}> To-Dos: {todos.length} </Link>
+      <Link to={`/todo/${number}`}> To-Dos: {todos.length} </Link>
     </div>
   );
 };
@@ -55,7 +57,13 @@ const Calendar = () => {
           <div key={`week-${index}`} className="calendar-week">
             {week.map((day) => (
               <div key={`day-${day}`} className="calendar-day">
-                {day && <Day number={day} id={day} />}
+                {day && (
+                  <>
+                    <span className="day-number">{day}</span>
+                    <br />
+                    <Day number={day} id={day} />
+                  </>
+                )}
               </div>
             ))}
           </div>
