@@ -9,7 +9,6 @@ const App = () => {
 
   return (
     <div>
-      <h1>Calendar + To-Do-List Project</h1>
       <Router>
         <Routes>
           <Route path="/" element={<Calendar />} />
